@@ -9,6 +9,8 @@
 class PlantSeeds
 
   def initialize
+    create_genres
+    create_books
   end
 
   def genres
@@ -54,7 +56,7 @@ class PlantSeeds
       {
         title: "New York 2140",
         description: "A novel set in a post climate change flooded New York City that explores the lives of its denizens.",
-        author: ""
+        author: "",
         genres: ["Hard Science Fiction", "Dying Earth", "Near Future"]
       },
       {
@@ -70,7 +72,7 @@ class PlantSeeds
           On the remote planet of Stygia, a man named Fremant, haunted by memories of torture that seem drawn from Paul's mind, is one of a small group of colonists struggling for survival on a harsh but weirdly beautiful world whose dominant life-forms are insects. The sole humanoid race on the planet has been hunted to extinction by the human settlers, whose long journey to Stygia has left them unable to understand their own history and technology.
           Thrown back to a more primitive state, they seem destined to repeat all the sins of the world they fled to Stygia to escape.
           Is Paul dreaming Fremant as a way of escaping the horrors of his imprisonment? Or is there a stronger - and far stranger - connection between the two men, whose very different circumstances begin to take on uncanny parallels?
-          As aspects of their identities blur and, finally, merge, astonishing answers take shape - and profound new questions arise."
+          As aspects of their identities blur and, finally, merge, astonishing answers take shape - and profound new questions arise.",
         author: "Brian W. Aldiss",
         genres: ["Colonization"]
       },
@@ -94,16 +96,12 @@ class PlantSeeds
   def create_books
     puts "Starting to create Books."
     books.each do |book|
-      genres = book[:genres]
-      book = Book.create!(book, genres)
+      book[:genres] = Genre.where(name: book[:genres])
+      book = Book.create!(book)
     end
     puts "Finshed creating Books!"
   end
 
-  def create_book_genres(book, genres)
-    genres.each do |genre|
-      BookGenres.create(book: book, genre: Genre.find_by(name: genre)))
-    end
-  end
-
 end
+
+PlantSeeds.new
