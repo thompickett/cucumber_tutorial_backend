@@ -56,7 +56,7 @@ class PlantSeeds
       {
         title: "New York 2140",
         description: "A novel set in a post climate change flooded New York City that explores the lives of its denizens.",
-        author: "",
+        author: "Kim Stanley Robinson",
         genres: ["Hard Science Fiction", "Dying Earth", "Near Future"]
       },
       {
@@ -77,7 +77,7 @@ class PlantSeeds
         genres: ["Colonization"]
       },
       {
-        title: "Children of Time",
+        title: "Heart of the Comet",
         description: "An odyssey of discovery, from a shattered society through the solar system with a handful of men and women who ride a cold, hurtling ball of ice to the shaky promise of a distant, unknowable future.",
         author: "David Brin Gregory Benford",
         genres: ["Colonization", "Space Exploration"]

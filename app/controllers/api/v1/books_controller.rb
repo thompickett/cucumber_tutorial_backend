@@ -6,12 +6,12 @@ class Api::V1::BooksController < Api::ApiController
   end
 
   def show
-    book = Book.find_by(title: books_params[:title])
+    book = Book.find(params[:id])
     render json: book
   end
 
   def update
-    book = Book.find_by(title: books_params[:title])
+    book = Book.find(params[:id])
     book.update(rating: books_params[:rating])
     render json: book
   end
@@ -23,7 +23,7 @@ class Api::V1::BooksController < Api::ApiController
   private
 
     def books_params
-      params.require(:books).permit(:title,:description,:rating)
+      params.permit(:title, :description, :rating, :author)
     end
 
 end
